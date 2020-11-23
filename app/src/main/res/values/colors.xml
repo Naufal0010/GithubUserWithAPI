@@ -10,4 +10,5 @@
     
     // Color on TextView
     <color name="black_gray">#24292E</color>
+    <color name="black_gray_faded">#454B51</color>
 </resources>
