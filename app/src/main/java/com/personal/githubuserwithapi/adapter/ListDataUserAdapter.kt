@@ -13,7 +13,15 @@ import com.personal.githubuserwithapi.databinding.ItemRowUserBinding
 import com.personal.githubuserwithapi.model.User
 
 class ListDataUserAdapter(private val listData : ArrayList<User>) : RecyclerView.Adapter<ListDataUserAdapter.ListViewHolder>() {
-    
+
+    private val mData = ArrayList<User>()
+
+    fun setData(items : ArrayList<User>) {
+        mData.clear()
+        mData.addAll(items)
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListDataUserAdapter.ListViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_row_user, parent, false)
 
