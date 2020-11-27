@@ -10,4 +10,5 @@
     
     // Color on TextView
     <color name="black_gray">#24292E</color>
+    <color name="gray_light">#E9E9E9</color>
 </resources>

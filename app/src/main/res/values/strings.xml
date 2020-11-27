@@ -3,4 +3,7 @@
     <string name="github_app">Github App</string>
     <string name="images_github">images_github</string>
     <string name="wave">wave</string>
+    <string name="welcome">Welcome to Github App\nPlease search the username\nto show list from github users</string>
+    <string name="username">username</string>
+    <string name="company">company</string>
 </resources>
