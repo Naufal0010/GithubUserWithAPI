@@ -14,11 +14,9 @@ import com.personal.githubuserwithapi.model.User
 
 class ListDataUserAdapter(private val listData : ArrayList<User>) : RecyclerView.Adapter<ListDataUserAdapter.ListViewHolder>() {
 
-    private val mData = ArrayList<User>()
-
     fun setData(items : ArrayList<User>) {
-        mData.clear()
-        mData.addAll(items)
+        listData.clear()
+        listData.addAll(items)
         notifyDataSetChanged()
     }
 
@@ -44,7 +42,6 @@ class ListDataUserAdapter(private val listData : ArrayList<User>) : RecyclerView
             )
 
             val intent = Intent(it.context, DetailActivity::class.java)
-            intent.putExtra(DetailActivity.EXTRA_DETAIL_USER, userData)
             it.context.startActivity(intent)
         }
     }
@@ -58,8 +55,8 @@ class ListDataUserAdapter(private val listData : ArrayList<User>) : RecyclerView
                 .load(data.avatar)
                 .apply(RequestOptions().override(55, 55))
                 .into(binding.imageItemPhoto)
-            binding.tvItemName.text = data.username
-            binding.tvItemCompany.text = data.company
+            binding.tvItemUsername.text = data.username
+            binding.tvItemName.text = data.name
         }
     }
 

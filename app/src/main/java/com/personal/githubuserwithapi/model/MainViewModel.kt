@@ -1,6 +1,8 @@
 package com.personal.githubuserwithapi.model
 
+import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,47 +12,55 @@ import cz.msebera.android.httpclient.Header
 import org.json.JSONObject
 import java.lang.Exception
 
+
 class MainViewModel: ViewModel() {
-    val listUserNonMutable = ArrayList<User>()
+    val listUser = ArrayList<User>()
     private val listUserMutable = MutableLiveData<ArrayList<User>>()
 
-    fun getListUser(): LiveData<ArrayList<User>> {
-        return  listUserMutable
-    }
-
-    fun setListUser(user: String) {
-        val apiKey = "d7959a523b6e0b2bbad26d9c3d2ba073d11193ed"
-        val url = "https://api.github.com/search/users?q=$user"
-
+    fun setListUser(user: String, context: Context) {
         val client = AsyncHttpClient()
+        client.addHeader("Authorization", "334e341ab658ad824ac18099bfda148509be775f")
+        client.addHeader("User-Agent", "Request")
+        client.setUserAgent("User-Agent")
+        val url = "https://api.github.com/search/users?q=$user"
         client.get(url, object : AsyncHttpResponseHandler() {
-            override fun onSuccess(statusCode: Int, headers: Array<out Header>, responseBody: ByteArray) {
+            override fun onSuccess(statusCode: Int, headers: Array<out Header>?, responseBody: ByteArray) {
                 try {
-                    listUserNonMutable.clear()
-                    val responseObject = JSONObject("items")
+                    listUser.clear()
+                    val result = String(responseBody)
+                    val responseObject = JSONObject(result)
                     val responseArray = responseObject.getJSONArray("items")
                     for (i in 0 until responseArray.length()) {
-                        val item = responseArray.getJSONObject(i)
-                        val username = item.getString("login")
-                        getListUserDetail(username)
+                        val username = responseArray.getJSONObject(i).getString("login")
+                        getListUserDetail(username, context)
                     }
                 } catch (e: Exception) {
-                    Log.d("Exception : ", e.message.toString())
+                    Log.d("Exception ", e.message.toString())
                 }
             }
 
             override fun onFailure(statusCode: Int, headers: Array<out Header>?, responseBody: ByteArray?, error: Throwable?) {
-                Log.d("onFailure : ", error?.message.toString())
+                Log.d("failureSetListUser  ", error?.message.toString())
+                val message = when(statusCode) {
+                    401 -> "$statusCode : Jaringan kurang bagus"
+                    403 -> "$statusCode : Silakan Coba Beberapa Saat Lagi"
+                    404 -> "$statusCode : Not found"
+                    else -> "$statusCode : ${error?.message}"
+                }
+
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
             }
 
         })
     }
 
-    private fun getListUserDetail(user: String) {
-        val apiKey = "d7959a523b6e0b2bbad26d9c3d2ba073d11193ed"
+    private fun getListUserDetail(user: String, context: Context) {
+        val client = AsyncHttpClient()
+        client.addHeader("Authorization", "334e341ab658ad824ac18099bfda148509be775f")
+        client.addHeader("User-Agent", "Request")
+        client.setUserAgent("User-Agent")
         val url = "https://api.github.com/users/$user"
 
-        val client = AsyncHttpClient()
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<out Header>?, responseBody: ByteArray) {
                 try {
@@ -65,17 +75,29 @@ class MainViewModel: ViewModel() {
                     followers = responseObject.getString("followers"),
                     following = responseObject.getString("following"))
 
-                    listUserNonMutable.add(userData)
-                    listUserMutable.postValue(listUserNonMutable)
+                    listUser.add(userData)
+                    listUserMutable.postValue(listUser)
                 } catch (e: Exception) {
-                    Log.d("Exception : ", e.message.toString())
+                    Log.d("Exception ", e.message.toString())
                 }
             }
 
             override fun onFailure(statusCode: Int, headers: Array<out Header>?, responseBody: ByteArray?, error: Throwable?) {
-                Log.d("onFailure : ", error?.message.toString())
+                Log.d("failureOnUserDetail  ", error?.message.toString())
+                val message = when(statusCode) {
+                    401 -> "$statusCode : Jaringan kurang bagus"
+                    403 -> "$statusCode : Silakan Coba Beberapa Saat Lagi"
+                    404 -> "$statusCode : Not found"
+                    else -> "$statusCode : ${error?.message}"
+                }
+
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
             }
 
         })
+    }
+
+    fun getListUser(): LiveData<ArrayList<User>> {
+        return  listUserMutable
     }
 }

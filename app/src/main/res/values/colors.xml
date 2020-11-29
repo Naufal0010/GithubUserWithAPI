@@ -8,7 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     
-    // Color on TextView
+    // Personal Colors
     <color name="black_gray">#24292E</color>
-    <color name="gray_light">#E9E9E9</color>
+    <color name="gray_light">#CFCFCF</color>
+    <color name="black_gray_faded">#485159</color>
+    <color name="dark_gray">#565555</color>
 </resources>

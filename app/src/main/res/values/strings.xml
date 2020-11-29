@@ -6,4 +6,6 @@
     <string name="welcome">Welcome to Github App\nPlease search the username\nto show list from github users</string>
     <string name="username">username</string>
     <string name="company">company</string>
+    <string name="search">search</string>
+    <string name="settings">settings</string>
 </resources>
