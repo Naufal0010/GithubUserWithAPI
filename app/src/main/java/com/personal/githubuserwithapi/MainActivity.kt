@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.personal.githubuserwithapi.adapter.ListDataUserAdapter
 import com.personal.githubuserwithapi.databinding.ActivityMainBinding
-import com.personal.githubuserwithapi.model.MainViewModel
+import com.personal.githubuserwithapi.api.MainViewModel
 import com.personal.githubuserwithapi.model.User
 
 class MainActivity : AppCompatActivity() {

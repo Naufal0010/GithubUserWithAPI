@@ -13,4 +13,5 @@
     <color name="gray_light">#CFCFCF</color>
     <color name="black_gray_faded">#485159</color>
     <color name="dark_gray">#565555</color>
+    <color name="gray_white">#CECBCB</color>
 </resources>
