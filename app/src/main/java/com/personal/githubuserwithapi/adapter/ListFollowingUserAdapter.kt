@@ -10,26 +10,27 @@ import com.bumptech.glide.request.RequestOptions
 import com.personal.githubuserwithapi.DetailActivity
 import com.personal.githubuserwithapi.R
 import com.personal.githubuserwithapi.databinding.ItemRowUserBinding
+import com.personal.githubuserwithapi.model.Following
 import com.personal.githubuserwithapi.model.User
 
-class ListDataUserAdapter(private val listData : ArrayList<User>) : RecyclerView.Adapter<ListDataUserAdapter.ListViewHolder>() {
+class ListFollowingUserAdapter(private val listFollowing : ArrayList<Following>) : RecyclerView.Adapter<ListFollowingUserAdapter.ViewHolder>() {
 
-    fun setData(items : ArrayList<User>) {
-        listData.clear()
-        listData.addAll(items)
+    fun setDataFollowing(items : ArrayList<Following>) {
+        listFollowing.clear()
+        listFollowing.addAll(items)
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListDataUserAdapter.ListViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListFollowingUserAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_row_user, parent, false)
 
-        return ListViewHolder(view)
+        return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ListDataUserAdapter.ListViewHolder, position: Int) {
-        holder.bind(listData[position])
+    override fun onBindViewHolder(holder: ListFollowingUserAdapter.ViewHolder, position: Int) {
+        holder.bind(listFollowing[position])
 
-        val data = listData[position]
+        val data = listFollowing[position]
         holder.itemView.setOnClickListener {
             val userData = User (data.username,
                 data.name,
@@ -47,11 +48,11 @@ class ListDataUserAdapter(private val listData : ArrayList<User>) : RecyclerView
         }
     }
 
-    override fun getItemCount(): Int = listData.size
+    override fun getItemCount(): Int = listFollowing.size
 
-    inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ItemRowUserBinding.bind(itemView)
-        fun bind(data: User) {
+        fun bind(data: Following) {
             Glide.with(itemView.context)
                 .load(data.avatar)
                 .apply(RequestOptions().override(55, 55))
@@ -60,5 +61,4 @@ class ListDataUserAdapter(private val listData : ArrayList<User>) : RecyclerView
             binding.tvItemName.text = data.name
         }
     }
-
 }

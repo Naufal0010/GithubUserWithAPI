@@ -5,7 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.personal.githubuserwithapi.R
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.personal.githubuserwithapi.adapter.ListDataUserAdapter
+import com.personal.githubuserwithapi.adapter.ListFollowingUserAdapter
+import com.personal.githubuserwithapi.api.FollowingViewModel
+import com.personal.githubuserwithapi.databinding.FragmentFollowingBinding
+import com.personal.githubuserwithapi.model.Following
+import com.personal.githubuserwithapi.model.User
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,22 +37,65 @@ class FollowingFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_following, container, false)
+    private var _binding: FragmentFollowingBinding? = null
+    private val binding get() = _binding!!
+
+    private var listFollowing: ArrayList<Following> = ArrayList()
+    private lateinit var adapter: ListFollowingUserAdapter
+    private lateinit var followingViewModel: FollowingViewModel
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = FragmentFollowingBinding.inflate(inflater, container, false)
+        val view = binding.root
+
+        adapter = ListFollowingUserAdapter(listFollowing)
+        followingViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())
+            .get(FollowingViewModel::class.java)
+
+        val followingUser = activity!!.intent.getParcelableExtra<User>(EXTRA_DETAIL_USER) as User
+        setRecyclerView()
+
+        followingViewModel.setListFollowing(activity!!.applicationContext, followingUser.username.toString())
+        showLoading(true)
+        viewModel(adapter)
+
+        return view
+    }
+
+    private fun setRecyclerView() {
+        binding.recyclerViewFollowing.layoutManager = LinearLayoutManager(activity)
+        binding.recyclerViewFollowing.setHasFixedSize(true)
+        binding.recyclerViewFollowing.adapter = adapter
+    }
+
+    private fun viewModel(adapter: ListFollowingUserAdapter) {
+        followingViewModel.getListFollowing().observe(viewLifecycleOwner, { listUser ->
+            if (listUser != null) {
+                adapter.setDataFollowing(listUser)
+                showLoading(false)
+                binding.recyclerViewFollowing.visibility = View.VISIBLE
+            }
+        })
+    }
+
+    private fun showLoading(state: Boolean) {
+        if (state) {
+            binding.progressBar.visibility = View.VISIBLE
+        }
+        else {
+            binding.progressBar.visibility = View.GONE
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FollowingFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+
+        const val EXTRA_DETAIL_USER = "extra_detail_user"
+
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
                 FollowingFragment().apply {

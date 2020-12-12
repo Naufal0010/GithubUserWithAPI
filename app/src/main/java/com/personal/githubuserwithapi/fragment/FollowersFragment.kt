@@ -5,7 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.personal.githubuserwithapi.R
+import com.personal.githubuserwithapi.adapter.ListFollowersUserAdapter
+import com.personal.githubuserwithapi.adapter.ListFollowingUserAdapter
+import com.personal.githubuserwithapi.api.FollowersViewModel
+import com.personal.githubuserwithapi.api.FollowingViewModel
+import com.personal.githubuserwithapi.databinding.FragmentFollowersBinding
+import com.personal.githubuserwithapi.databinding.FragmentFollowingBinding
+import com.personal.githubuserwithapi.model.Followers
+import com.personal.githubuserwithapi.model.Following
+import com.personal.githubuserwithapi.model.User
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,24 +41,60 @@ class FollowersFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_followers, container, false)
+    private var _binding: FragmentFollowersBinding? = null
+    private val binding get() = _binding!!
+
+    private var listFollowers: ArrayList<Followers> = ArrayList()
+    private lateinit var adapter: ListFollowersUserAdapter
+    private lateinit var followersViewModel: FollowersViewModel
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = FragmentFollowersBinding.inflate(inflater, container, false)
+        val view = binding.root
+
+        adapter = ListFollowersUserAdapter(listFollowers)
+        followersViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())
+            .get(FollowersViewModel::class.java)
+
+        val followersUser = activity!!.intent.getParcelableExtra<User>(EXTRA_DETAIL_USER) as User
+        setRecyclerView()
+
+        followersViewModel.setListFollowers(activity!!.applicationContext, followersUser.username.toString())
+        showLoading(true)
+        viewModel(adapter)
+
+        return view
+    }
+
+    private fun setRecyclerView() {
+        binding.recyclerViewFollowers.layoutManager = LinearLayoutManager(activity)
+        binding.recyclerViewFollowers.setHasFixedSize(true)
+        binding.recyclerViewFollowers.adapter = adapter
+    }
+
+    private fun viewModel(adapter: ListFollowersUserAdapter) {
+        followersViewModel.getListFollowers().observe(viewLifecycleOwner, { listUser ->
+            if (listUser != null) {
+                adapter.setDataFollowers(listUser)
+                showLoading(false)
+                binding.recyclerViewFollowers.visibility = View.VISIBLE
+            }
+        })
+    }
+
+    private fun showLoading(state: Boolean) {
+        if (state) {
+            binding.progressBar.visibility = View.VISIBLE
+        }
+        else {
+            binding.progressBar.visibility = View.GONE
+        }
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FollowersFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+
+        const val EXTRA_DETAIL_USER = "extra_detail_user"
+
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             FollowersFragment().apply {

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.View
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.personal.githubuserwithapi.adapter.ListDataUserAdapter
@@ -62,7 +63,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun viewModel(adapter: ListDataUserAdapter) {
-        mainViewModel.getListUser().observe(this,  { listUser ->
+        mainViewModel.getListUser().observe(this,   { listUser ->
             if (listUser != null) {
                 adapter.setData(listUser)
                 showLoading(false)

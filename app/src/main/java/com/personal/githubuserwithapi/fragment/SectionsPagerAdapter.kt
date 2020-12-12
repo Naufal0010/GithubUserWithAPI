@@ -11,7 +11,7 @@ import com.personal.githubuserwithapi.R
 class SectionsPagerAdapter(private val mContext: Context, fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     @StringRes
-    private val TAB_TITLES = intArrayOf(R.string.tab_following, R.string.tab_followers)
+    private val tabTitles = intArrayOf(R.string.tab_following, R.string.tab_followers)
 
     override fun getCount(): Int = 2
 
@@ -26,5 +26,5 @@ class SectionsPagerAdapter(private val mContext: Context, fragmentManager: Fragm
     }
 
     @Nullable
-    override fun getPageTitle(position: Int): CharSequence? = mContext.resources.getString(TAB_TITLES[position])
+    override fun getPageTitle(position: Int): CharSequence = mContext.resources.getString(tabTitles[position])
 }

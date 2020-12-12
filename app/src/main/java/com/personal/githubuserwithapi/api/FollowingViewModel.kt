@@ -8,39 +8,41 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
-import com.personal.githubuserwithapi.model.User
+import com.personal.githubuserwithapi.model.Following
 import cz.msebera.android.httpclient.Header
+import org.json.JSONArray
 import org.json.JSONObject
 import java.lang.Exception
 
+class FollowingViewModel: ViewModel() {
+    val listFollowingUser = ArrayList<Following>()
+    private val listFollowingUserMutable = MutableLiveData<ArrayList<Following>>()
 
-class MainViewModel: ViewModel() {
-    val listUser = ArrayList<User>()
-    private val listUserMutable = MutableLiveData<ArrayList<User>>()
+    fun getListFollowing() : LiveData<ArrayList<Following>> {
+        return listFollowingUserMutable
+    }
 
-    fun setListUser(user: String, context: Context) {
+    fun setListFollowing(context: Context, user: String) {
         val client = AsyncHttpClient()
         client.addHeader("Authorization", "334e341ab658ad824ac18099bfda148509be775f")
         client.addHeader("User-Agent", "Request")
-        val url = "https://api.github.com/search/users?q=$user"
+        val url = "https://api.github.com/users/$user/following"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<out Header>?, responseBody: ByteArray) {
                 try {
-                    listUser.clear()
                     val result = String(responseBody)
-                    val responseObject = JSONObject(result)
-                    val responseArray = responseObject.getJSONArray("items")
-                    for (i in 0 until responseArray.length()) {
-                        val username = responseArray.getJSONObject(i).getString("login")
-                        getListUserDetail(username, context)
+                    val responseArray = JSONArray(result)
+                    for(index in 0 until responseArray.length()) {
+                        val username = responseArray.getJSONObject(index).getString("login")
+                        getListFollowingUserDetail(context, username)
                     }
-                } catch (e: Exception) {
+                } catch (e : Exception) {
                     Log.d("Exception ", e.message.toString())
                 }
             }
 
             override fun onFailure(statusCode: Int, headers: Array<out Header>?, responseBody: ByteArray?, error: Throwable?) {
-                Log.d("failureSetListUser  ", error?.message.toString())
+                Log.d("setFollowingFailure ", error?.message.toString())
                 val message = when(statusCode) {
                     401 -> "$statusCode : Jaringan kurang bagus"
                     403 -> "$statusCode : Silakan Coba Beberapa Saat Lagi"
@@ -54,7 +56,7 @@ class MainViewModel: ViewModel() {
         })
     }
 
-    private fun getListUserDetail(user: String, context: Context) {
+    private fun getListFollowingUserDetail(context: Context, user: String) {
         val client = AsyncHttpClient()
         client.addHeader("Authorization", "334e341ab658ad824ac18099bfda148509be775f")
         client.addHeader("User-Agent", "Request")
@@ -64,24 +66,24 @@ class MainViewModel: ViewModel() {
                 try {
                     val result = String(responseBody)
                     val responseObject = JSONObject(result)
-                    val userData = User(username = responseObject.getString("login"),
-                    name = responseObject.getString("name"),
-                    avatar = responseObject.getString("avatar_url"),
-                    location = responseObject.getString("location"),
-                    company = responseObject.getString("company"),
-                    repository = responseObject.getString("public_repos"),
-                    followers = responseObject.getString("followers"),
-                    following = responseObject.getString("following"))
+                    val userData = Following(username = responseObject.getString("login"),
+                        name = responseObject.getString("name"),
+                        avatar = responseObject.getString("avatar_url"),
+                        location = responseObject.getString("location"),
+                        company = responseObject.getString("company"),
+                        repository = responseObject.getString("public_repos"),
+                        followers = responseObject.getString("followers"),
+                        following = responseObject.getString("following"))
 
-                    listUser.add(userData)
-                    listUserMutable.postValue(listUser)
+                    listFollowingUser.add(userData)
+                    listFollowingUserMutable.postValue(listFollowingUser)
                 } catch (e: Exception) {
                     Log.d("Exception ", e.message.toString())
                 }
             }
 
             override fun onFailure(statusCode: Int, headers: Array<out Header>?, responseBody: ByteArray?, error: Throwable?) {
-                Log.d("failureOnUserDetail  ", error?.message.toString())
+                Log.d("getListFollowing ", error?.message.toString())
                 val message = when(statusCode) {
                     401 -> "$statusCode : Jaringan kurang bagus"
                     403 -> "$statusCode : Silakan Coba Beberapa Saat Lagi"
@@ -91,11 +93,6 @@ class MainViewModel: ViewModel() {
 
                 Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
             }
-
         })
-    }
-
-    fun getListUser(): LiveData<ArrayList<User>> {
-        return  listUserMutable
     }
 }

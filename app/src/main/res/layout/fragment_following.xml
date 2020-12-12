@@ -5,14 +5,23 @@
     android:layout_height="match_parent"
     tools:context=".fragment.FollowingFragment">
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:visibility="gone" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_following"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
         android:scrollbarThumbVertical="@color/dark_gray"
         android:scrollbars="vertical"
+        android:visibility="gone"
         tools:listitem="@layout/item_row_user" />
 
 </FrameLayout>
