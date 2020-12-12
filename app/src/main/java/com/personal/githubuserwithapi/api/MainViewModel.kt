@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
+import com.personal.githubuserwithapi.R
 import com.personal.githubuserwithapi.model.User
 import cz.msebera.android.httpclient.Header
 import org.json.JSONObject
@@ -43,9 +44,9 @@ class MainViewModel: ViewModel() {
             override fun onFailure(statusCode: Int, headers: Array<out Header>?, responseBody: ByteArray?, error: Throwable?) {
                 Log.d("failureSetListUser  ", error?.message.toString())
                 val message = when(statusCode) {
-                    401 -> "$statusCode : Jaringan kurang bagus"
-                    403 -> "$statusCode : Silakan Coba Beberapa Saat Lagi"
-                    404 -> "$statusCode : Not found"
+                    401 -> "$statusCode : ${R.string.code_401}"
+                    403 -> "$statusCode : ${R.string.code_403}"
+                    404 -> "$statusCode : ${R.string.code_404}"
                     else -> "$statusCode : ${error?.message}"
                 }
 
@@ -85,9 +86,9 @@ class MainViewModel: ViewModel() {
             override fun onFailure(statusCode: Int, headers: Array<out Header>?, responseBody: ByteArray?, error: Throwable?) {
                 Log.d("failureOnUserDetail  ", error?.message.toString())
                 val message = when(statusCode) {
-                    401 -> "$statusCode : Jaringan kurang bagus"
-                    403 -> "$statusCode : Silakan Coba Beberapa Saat Lagi"
-                    404 -> "$statusCode : Not found"
+                    401 -> "$statusCode : ${R.string.code_401}"
+                    403 -> "$statusCode : ${R.string.code_403}"
+                    404 -> "$statusCode : ${R.string.code_404}"
                     else -> "$statusCode : ${error?.message}"
                 }
 
