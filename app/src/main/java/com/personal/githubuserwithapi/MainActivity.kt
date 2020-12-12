@@ -2,18 +2,22 @@ package com.personal.githubuserwithapi
 
 import android.app.SearchManager
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.SearchView
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.personal.githubuserwithapi.adapter.ListDataUserAdapter
 import com.personal.githubuserwithapi.databinding.ActivityMainBinding
 import com.personal.githubuserwithapi.api.MainViewModel
 import com.personal.githubuserwithapi.model.User
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
@@ -63,7 +67,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun viewModel(adapter: ListDataUserAdapter) {
-        mainViewModel.getListUser().observe(this,   { listUser ->
+        mainViewModel.getListUser().observe(this, { listUser ->
             if (listUser != null) {
                 adapter.setData(listUser)
                 showLoading(false)
@@ -98,6 +102,16 @@ class MainActivity : AppCompatActivity() {
                 return false
             }
         })
-        return true
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.settings) {
+            val mIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
+            startActivity(mIntent)
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }

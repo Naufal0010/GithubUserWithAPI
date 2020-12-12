@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.personal.githubuserwithapi.adapter.ListDataUserAdapter
 import com.personal.githubuserwithapi.adapter.ListFollowingUserAdapter
 import com.personal.githubuserwithapi.api.FollowingViewModel
 import com.personal.githubuserwithapi.databinding.FragmentFollowingBinding

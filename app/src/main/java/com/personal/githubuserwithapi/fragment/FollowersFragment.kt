@@ -7,15 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.personal.githubuserwithapi.R
 import com.personal.githubuserwithapi.adapter.ListFollowersUserAdapter
-import com.personal.githubuserwithapi.adapter.ListFollowingUserAdapter
 import com.personal.githubuserwithapi.api.FollowersViewModel
-import com.personal.githubuserwithapi.api.FollowingViewModel
 import com.personal.githubuserwithapi.databinding.FragmentFollowersBinding
-import com.personal.githubuserwithapi.databinding.FragmentFollowingBinding
 import com.personal.githubuserwithapi.model.Followers
-import com.personal.githubuserwithapi.model.Following
 import com.personal.githubuserwithapi.model.User
 
 // TODO: Rename parameter arguments, choose names that match

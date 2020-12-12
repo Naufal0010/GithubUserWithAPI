@@ -11,7 +11,6 @@ import com.personal.githubuserwithapi.DetailActivity
 import com.personal.githubuserwithapi.R
 import com.personal.githubuserwithapi.databinding.ItemRowUserBinding
 import com.personal.githubuserwithapi.model.Followers
-import com.personal.githubuserwithapi.model.Following
 import com.personal.githubuserwithapi.model.User
 
 class ListFollowersUserAdapter(private val listFollowers: ArrayList<Followers>) : RecyclerView.Adapter<ListFollowersUserAdapter.ViewHolder>() {

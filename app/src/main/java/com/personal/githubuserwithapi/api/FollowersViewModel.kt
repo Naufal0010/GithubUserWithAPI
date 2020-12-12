@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModel
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import com.personal.githubuserwithapi.model.Followers
-import com.personal.githubuserwithapi.model.Following
 import cz.msebera.android.httpclient.Header
 import org.json.JSONArray
 import org.json.JSONObject
@@ -27,6 +26,7 @@ class FollowersViewModel: ViewModel() {
         val client = AsyncHttpClient()
         client.addHeader("Authorization", "334e341ab658ad824ac18099bfda148509be775f")
         client.addHeader("User-Agent", "Request")
+        client.setUserAgent("User-Agent")
         val url = "https://api.github.com/users/$user/followers"
         client.get(url, object :  AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<out Header>?, responseBody: ByteArray) {
@@ -61,6 +61,7 @@ class FollowersViewModel: ViewModel() {
         val client = AsyncHttpClient()
         client.addHeader("Authorization", "334e341ab658ad824ac18099bfda148509be775f")
         client.addHeader("User-Agent", "Request")
+        client.setUserAgent("User-Agent")
         val url = "https://api.github.com/users/$user"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<out Header>?, responseBody: ByteArray) {

@@ -1,13 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Github User</string>
     <string name="github_app">Github App</string>
     <string name="images_github">images_github</string>
     <string name="wave">wave</string>
-    <string name="welcome">Welcome to Github App\nPlease search the username\nto show list from github users</string>
+    <string name="welcome">Selamat Datang di Github App\nSilakan cari username\nuntuk memunculkan daftar dari github users</string>
     <string name="username">username</string>
     <string name="company">company</string>
     <string name="search">search</string>
-    <string name="change_language_settings">Change Language Settings</string>
+    <string name="change_language_settings">Ubah Pengaturan Bahasa</string>
     <string name="followers">Followers</string>
     <string name="following">Following</string>
     <string name="repository">Repository</string>
@@ -22,5 +23,4 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tab_following">Following</string>
     <string name="tab_followers">Followers</string>
-
 </resources>
