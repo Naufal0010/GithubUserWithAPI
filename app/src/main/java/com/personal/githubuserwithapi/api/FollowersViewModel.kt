@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
+import com.personal.githubuserwithapi.BuildConfig
 import com.personal.githubuserwithapi.R
 import com.personal.githubuserwithapi.model.Followers
 import cz.msebera.android.httpclient.Header
@@ -25,7 +26,7 @@ class FollowersViewModel: ViewModel() {
 
     fun setListFollowers(context: Context, user: String) {
         val client = AsyncHttpClient()
-        client.addHeader("Authorization", "334e341ab658ad824ac18099bfda148509be775f")
+        client.addHeader("Authorization", BuildConfig.GITHUB_TOKEN)
         client.addHeader("User-Agent", "Request")
         client.setUserAgent("User-Agent")
         val url = "https://api.github.com/users/$user/followers"
@@ -60,7 +61,7 @@ class FollowersViewModel: ViewModel() {
 
     private fun getListFollowersUserDetail(context: Context, user: String) {
         val client = AsyncHttpClient()
-        client.addHeader("Authorization", "334e341ab658ad824ac18099bfda148509be775f")
+        client.addHeader("Authorization", BuildConfig.GITHUB_TOKEN)
         client.addHeader("User-Agent", "Request")
         client.setUserAgent("User-Agent")
         val url = "https://api.github.com/users/$user"

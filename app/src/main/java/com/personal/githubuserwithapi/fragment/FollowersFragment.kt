@@ -13,18 +13,10 @@ import com.personal.githubuserwithapi.databinding.FragmentFollowersBinding
 import com.personal.githubuserwithapi.model.Followers
 import com.personal.githubuserwithapi.model.User
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FollowersFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FollowersFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
@@ -90,13 +82,5 @@ class FollowersFragment : Fragment() {
 
         const val EXTRA_DETAIL_USER = "extra_detail_user"
 
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FollowersFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }

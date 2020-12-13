@@ -13,7 +13,7 @@ class SectionsPagerAdapter(private val mContext: Context, fragmentManager: Fragm
     @StringRes
     private val tabTitles = intArrayOf(R.string.tab_following, R.string.tab_followers)
 
-    override fun getCount(): Int = 2
+    override fun getCount(): Int = tabTitles.size
 
     override fun getItem(position: Int): Fragment {
         var fragment: Fragment? = null

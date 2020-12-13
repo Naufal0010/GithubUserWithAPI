@@ -6,7 +6,7 @@ plugins {
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.personal.githubuserwithapi"
@@ -14,6 +14,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        buildConfigField("String", "GITHUB_TOKEN", '"334e341ab658ad824ac18099bfda148509be775f"')
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -46,7 +47,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    testImplementation 'junit:junit:4.+'
+    testImplementation 'junit:junit:4.13.1'
 
     // Testing App Android dependency
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

@@ -31,18 +31,8 @@ class ListDataUserAdapter(private val listData : ArrayList<User>) : RecyclerView
 
         val data = listData[position]
         holder.itemView.setOnClickListener {
-            val userData = User (data.username,
-                data.name,
-                data.avatar,
-                data.company,
-                data.location,
-                data.repository,
-                data.followers,
-                data.following
-            )
-
             val intent = Intent(it.context, DetailActivity::class.java)
-            intent.putExtra(DetailActivity.EXTRA_DETAIL_USER, userData)
+            intent.putExtra(DetailActivity.EXTRA_DETAIL_USER, data)
             it.context.startActivity(intent)
         }
     }
