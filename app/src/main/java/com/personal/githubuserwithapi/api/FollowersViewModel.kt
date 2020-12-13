@@ -46,9 +46,9 @@ class FollowersViewModel: ViewModel() {
             override fun onFailure(statusCode: Int, headers: Array<out Header>?, responseBody: ByteArray?, error: Throwable?) {
                 Log.d("setFollowersFailure ", error?.message.toString())
                 val message = when(statusCode) {
-                    401 -> "$statusCode : ${R.string.code_401}"
-                    403 -> "$statusCode : ${R.string.code_403}"
-                    404 -> "$statusCode : ${R.string.code_404}"
+                    401 -> "$statusCode : ${context.resources.getString(R.string.code_401)}"
+                    403 -> "$statusCode : ${context.resources.getString(R.string.code_403)}"
+                    404 -> "$statusCode : ${context.resources.getString(R.string.code_404)}"
                     else -> "$statusCode : ${error?.message}"
                 }
 
