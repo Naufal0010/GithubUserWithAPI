@@ -13,8 +13,6 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
 
-    private var isFavorite: Boolean = false
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
@@ -28,7 +26,6 @@ class DetailActivity : AppCompatActivity() {
 
         supportActionBar?.elevation = 0f
 
-        setFavoriteIcon()
         setDataToDetail()
     }
 
@@ -47,8 +44,8 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.title = listUser.username
     }
 
-    private fun setFavoriteIcon() {
-        if (isFavorite) {
+    private fun setFavoriteIcon(state: Boolean) {
+        if (state) {
             binding.fab.setImageResource(R.drawable.ic_favorite)
             snackBarMessage("Berhasil ditambahkan Favorite")
         }

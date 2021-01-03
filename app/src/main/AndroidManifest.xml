@@ -14,9 +14,10 @@
         android:theme="@style/Theme.GithubUserWithAPI"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".FavoriteActivity"></activity>
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings" />
         <activity
             android:name=".DetailActivity"
             android:parentActivityName=".MainActivity" />

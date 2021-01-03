@@ -140,13 +140,14 @@
             android:id="@+id/tv_company"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="14dp"
             android:text="@string/new_york"
             android:textColor="@color/gray_light"
             android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+            android:gravity="start|center"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/tv_location" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -163,14 +164,14 @@
             android:id="@+id/tv_location"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="14dp"
-            android:gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:gravity="start|center"
             android:text="@string/google"
             android:textColor="@color/gray_light"
             android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@+id/imageView3"
-            app:layout_constraintTop_toBottomOf="@+id/tv_company" />
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
