@@ -15,13 +15,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.personal.githubuserwithapi.adapter.ListDataUserAdapter
 import com.personal.githubuserwithapi.databinding.ActivityMainBinding
 import com.personal.githubuserwithapi.api.MainViewModel
-import com.personal.githubuserwithapi.model.User
+import com.personal.githubuserwithapi.entity.User
 import java.util.*
 import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
     private var listUser: ArrayList<User> = ArrayList()
+    private lateinit var context: Context
     private lateinit var binding: ActivityMainBinding
     private lateinit var  adapter: ListDataUserAdapter
     private lateinit var mainViewModel: MainViewModel
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.title = "Github Users"
+        supportActionBar?.title = context.resources.getString(R.string.github_name)
         showLoading(false)
         showText(true)
 
@@ -57,7 +58,6 @@ class MainActivity : AppCompatActivity() {
             binding.tvWelcome.visibility = View.GONE
         }
     }
-
 
     private fun showRecycleList() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this@MainActivity)

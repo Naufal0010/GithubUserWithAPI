@@ -10,7 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.personal.githubuserwithapi.DetailActivity
 import com.personal.githubuserwithapi.R
 import com.personal.githubuserwithapi.databinding.ItemRowUserBinding
-import com.personal.githubuserwithapi.model.User
+import com.personal.githubuserwithapi.entity.User
 
 class ListDataUserAdapter(private val listData : ArrayList<User>) : RecyclerView.Adapter<ListDataUserAdapter.ListViewHolder>() {
 

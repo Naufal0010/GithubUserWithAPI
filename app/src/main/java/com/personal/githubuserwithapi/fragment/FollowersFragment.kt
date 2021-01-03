@@ -10,30 +10,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.personal.githubuserwithapi.adapter.ListFollowersUserAdapter
 import com.personal.githubuserwithapi.api.FollowersViewModel
 import com.personal.githubuserwithapi.databinding.FragmentFollowersBinding
-import com.personal.githubuserwithapi.model.Followers
-import com.personal.githubuserwithapi.model.User
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.personal.githubuserwithapi.entity.Followers
+import com.personal.githubuserwithapi.entity.User
 
 class FollowersFragment : Fragment() {
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
     private var _binding: FragmentFollowersBinding? = null
     private val binding get() = _binding!!
 
     private var listFollowers: ArrayList<Followers> = ArrayList()
     private lateinit var adapter: ListFollowersUserAdapter
     private lateinit var followersViewModel: FollowersViewModel
+
+    companion object {
+        const val EXTRA_DETAIL_USER = "extra_detail_user"
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentFollowersBinding.inflate(inflater, container, false)
@@ -76,11 +66,5 @@ class FollowersFragment : Fragment() {
         else {
             binding.progressBar.visibility = View.GONE
         }
-    }
-
-    companion object {
-
-        const val EXTRA_DETAIL_USER = "extra_detail_user"
-
     }
 }

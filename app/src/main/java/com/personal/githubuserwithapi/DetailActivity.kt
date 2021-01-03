@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.personal.githubuserwithapi.databinding.ActivityDetailBinding
 import com.personal.githubuserwithapi.fragment.SectionsPagerAdapter
-import com.personal.githubuserwithapi.model.User
+import com.personal.githubuserwithapi.entity.User
 
 class DetailActivity : AppCompatActivity() {
 
