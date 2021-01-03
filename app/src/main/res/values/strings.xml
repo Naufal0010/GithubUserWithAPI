@@ -8,7 +8,6 @@
     <string name="username">username</string>
     <string name="company">company</string>
     <string name="search">search</string>
-    <string name="change_language_settings">Change Language Settings</string>
     <string name="followers">Followers</string>
     <string name="following">Following</string>
     <string name="repository">Repository</string>
@@ -26,5 +25,15 @@
 
     <string name="tab_following">Following</string>
     <string name="tab_followers">Followers</string>
+    <string name="fab_button">fab button</string>
+    <string name="favorite">favorite</string>
+    <string name="settings">settings</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <string name="settings_activity">Settings</string>
+    <string name="enable_alarm">Enable Alarm</string>
+    <string name="change_language_settings">Change Language Settings</string>
+    <string name="language">Language</string>
+    <string name="enable_alarm_in_9am">Enable Alarm in 09:00</string>
 
 </resources>

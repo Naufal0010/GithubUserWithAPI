@@ -7,6 +7,15 @@ import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Compan
 
 internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
+    override fun onCreate(db: SQLiteDatabase) {
+        db.execSQL(SQL_CREATE_TABLE_FAVORITE)
+    }
+
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        db.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
+        onCreate(db)
+    }
+
     companion object {
 
         private const val DATABASE_NAME = "dbfavorite"
@@ -18,14 +27,5 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
                 " (${DatabaseContract.FavoriteColumns.USERNAME} TEXT NOT NULL," +
                 " (${DatabaseContract.FavoriteColumns.NAME} TEXT NOT NULL," +
                 " (${DatabaseContract.FavoriteColumns.AVATAR} TEXT NOT NULL)"
-    }
-
-    override fun onCreate(db: SQLiteDatabase) {
-        db.execSQL(SQL_CREATE_TABLE_FAVORITE)
-    }
-
-    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        db.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
-        onCreate(db)
     }
 }

@@ -11,21 +11,6 @@ import java.sql.SQLException
 
 class FavoriteHelper (context: Context) {
 
-    companion object {
-        private const val DATABASE_TABLE = TABLE_NAME
-        private lateinit var dataBaseHelper: DatabaseHelper
-        private var INSTANCE: FavoriteHelper? = null
-        fun getInstance(context: Context): FavoriteHelper =
-            INSTANCE ?: synchronized(this) {
-                INSTANCE ?: FavoriteHelper(context)
-            }
-
-        private lateinit var database: SQLiteDatabase
-    }
-    init {
-        dataBaseHelper = DatabaseHelper(context)
-    }
-
     @Throws(SQLException::class)
     fun open() {
         database = dataBaseHelper.writableDatabase
@@ -71,5 +56,20 @@ class FavoriteHelper (context: Context) {
 
     fun deleteByUsername(username: String): Int {
         return database.delete(DATABASE_TABLE, "$USERNAME = '$username'", null)
+    }
+
+    companion object {
+        private const val DATABASE_TABLE = TABLE_NAME
+        private lateinit var dataBaseHelper: DatabaseHelper
+        private var INSTANCE: FavoriteHelper? = null
+        fun getInstance(context: Context): FavoriteHelper =
+            INSTANCE ?: synchronized(this) {
+                INSTANCE ?: FavoriteHelper(context)
+            }
+
+        private lateinit var database: SQLiteDatabase
+    }
+    init {
+        dataBaseHelper = DatabaseHelper(context)
     }
 }

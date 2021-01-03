@@ -5,8 +5,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Favorite (
-    var id: Int?,
-    var username: String?,
-    var name: String?,
-    var avatar: String?
+    var id: Int? = 0,
+    var username: String? = null,
+    var name: String? = null,
+    var avatar: String? = null
     ) : Parcelable

@@ -22,7 +22,6 @@ import kotlin.collections.ArrayList
 class MainActivity : AppCompatActivity() {
 
     private var listUser: ArrayList<User> = ArrayList()
-    private lateinit var context: Context
     private lateinit var binding: ActivityMainBinding
     private lateinit var  adapter: ListDataUserAdapter
     private lateinit var mainViewModel: MainViewModel
@@ -32,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.title = context.resources.getString(R.string.github_name)
+        supportActionBar?.title = resources.getString(R.string.github_name)
         showLoading(false)
         showText(true)
 
@@ -108,8 +107,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.settings) {
-            val mIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
-            startActivity(mIntent)
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
         }
 
         return super.onOptionsItemSelected(item)
