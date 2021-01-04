@@ -1,6 +1,5 @@
 package com.personal.githubuserwithapi
 
-import android.content.Intent
 import android.database.ContentObserver
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +8,7 @@ import android.os.HandlerThread
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import com.personal.githubuserwithapi.adapter.FavoriteAdaper
+import com.personal.githubuserwithapi.adapter.FavoriteAdapter
 import com.personal.githubuserwithapi.databinding.ActivityFavoriteBinding
 import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Companion.CONTENT_URI
 import com.personal.githubuserwithapi.db.FavoriteHelper
@@ -24,8 +23,9 @@ class FavoriteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityFavoriteBinding
 
-    private lateinit var adapter: FavoriteAdaper
     private lateinit var favoriteHelper: FavoriteHelper
+    private lateinit var adapter: FavoriteAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +34,6 @@ class FavoriteActivity : AppCompatActivity() {
 
         supportActionBar?.title = resources.getString(R.string.favorite_users)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
 
         val handlerThread = HandlerThread("DataObserver")
         handlerThread.start()
@@ -55,7 +54,7 @@ class FavoriteActivity : AppCompatActivity() {
             loadFavoriteAsync()
         }
         else {
-            val list = savedInstanceState.getParcelableArrayList<Favorite>(EXTRA_STATE)
+            val list = savedInstanceState.getParcelableArrayList<Favorite>(EXTRA_DETAIL_USER)
             if (list != null) {
                 adapter.listFavorite = list
             }
@@ -67,20 +66,13 @@ class FavoriteActivity : AppCompatActivity() {
     private fun setRecyclerView() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.setHasFixedSize(true)
-        adapter = FavoriteAdaper {
-            val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra(EXTRA_USERNAME, it.username)
-            intent.putExtra(EXTRA_NAME, it.name)
-            intent.putExtra(EXTRA_AVATAR, it.avatar)
-            startActivity(intent)
-        }
-
+        adapter = FavoriteAdapter(this)
         binding.recyclerView.adapter = adapter
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putParcelableArrayList(EXTRA_STATE, adapter.listFavorite)
+        outState.putParcelableArrayList(EXTRA_DETAIL_USER, adapter.listFavorite)
     }
 
     private fun loadFavoriteAsync() {
@@ -91,21 +83,21 @@ class FavoriteActivity : AppCompatActivity() {
                 MappingHelper.mapCursorToArrayList(cursor)
             }
 
-            binding.progressBar.visibility = View.INVISIBLE
             val favorites = deferredFavorites.await()
+            binding.progressBar.visibility = View.INVISIBLE
             if (favorites.size > 0) {
+                binding.recyclerView.visibility = View.VISIBLE
                 adapter.listFavorite = favorites
             }
             else {
                 adapter.listFavorite = ArrayList()
-                showSnackBarMessage(resources.getString(R.string.empyt_data))
+                showSnackBarMessage(resources.getString(R.string.empty_data))
             }
         }
     }
 
     override fun onResume() {
         super.onResume()
-        setRecyclerView()
         loadFavoriteAsync()
     }
 
@@ -124,9 +116,6 @@ class FavoriteActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val EXTRA_USERNAME = "extra_username"
-        private const val EXTRA_NAME = "extra_name"
-        private const val EXTRA_AVATAR = "extra_avatar"
-        private const val EXTRA_STATE = "extra_state"
+        const val EXTRA_DETAIL_USER = "extra_detail_user"
     }
 }

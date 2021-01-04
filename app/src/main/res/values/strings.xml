@@ -30,12 +30,15 @@
     <string name="settings">settings</string>
     <string name="title_activity_settings">SettingsActivity</string>
 
-    <string name="empyt_data">There\'s no data currently</string>
+    <string name="added_favorite">Added to Favorite</string>
+    <string name="removed_favorite">Removed from Favorite</string>
+    <string name="empty_data">There\'s no data currently</string>
     <string name="favorite_users">Favorite Users</string>
     <string name="settings_activity">Settings</string>
     <string name="enable_alarm">Enable Alarm</string>
     <string name="change_language_settings">Change Language Settings</string>
     <string name="language">Language</string>
     <string name="enable_alarm_in_9am">Enable Alarm in 09:00</string>
+    <string name="favorite_detail">favorite_detail</string>
 
 </resources>

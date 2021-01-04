@@ -32,7 +32,9 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="fab_button">fab button</string>
 
-    <string name="empyt_data">Tidak ada data saat ini</string>
+    <string name="added_favorite">Ditambahkan ke Favorite</string>
+    <string name="removed_favorite">Dikeluarkan dari Favorite</string>
+    <string name="empty_data">Tidak ada data saat ini</string>
     <string name="favorite_users">Favorite Users</string>
     <string name="settings_activity">Pengaturan</string>
     <string name="enable_alarm">Aktifkan Alarm</string>

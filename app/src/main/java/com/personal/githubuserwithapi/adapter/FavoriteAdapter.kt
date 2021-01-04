@@ -11,7 +11,7 @@ import com.personal.githubuserwithapi.R
 import com.personal.githubuserwithapi.databinding.ItemRowUserBinding
 import com.personal.githubuserwithapi.entity.Favorite
 
-class FavoriteAdaper(private val activity: (Favorite) -> Unit) : RecyclerView.Adapter<FavoriteAdaper.FavoriteViewHolder>() {
+class FavoriteAdapter(private val activity: Activity) : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
 
     var listFavorite = ArrayList<Favorite>()
     set(listFavorite) {
@@ -22,13 +22,13 @@ class FavoriteAdaper(private val activity: (Favorite) -> Unit) : RecyclerView.Ad
 
         notifyDataSetChanged()
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteAdaper.FavoriteViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteAdapter.FavoriteViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_row_user, parent, false)
 
         return FavoriteViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: FavoriteAdaper.FavoriteViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FavoriteAdapter.FavoriteViewHolder, position: Int) {
         holder.bind(listFavorite[position])
     }
 
@@ -46,4 +46,5 @@ class FavoriteAdaper(private val activity: (Favorite) -> Unit) : RecyclerView.Ad
             binding.tvItemName.text = favorite.name
         }
     }
+
 }

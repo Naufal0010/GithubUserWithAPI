@@ -11,11 +11,12 @@ object MappingHelper {
 
         favoriteCursor?.apply {
             while (moveToNext()) {
-                val id = getInt(getColumnIndexOrThrow(DatabaseContract.FavoriteColumns._ID))
                 val username = getString(getColumnIndexOrThrow(DatabaseContract.FavoriteColumns.USERNAME))
                 val name = getString(getColumnIndexOrThrow(DatabaseContract.FavoriteColumns.NAME))
                 val avatar = getString(getColumnIndexOrThrow(DatabaseContract.FavoriteColumns.AVATAR))
-                favoriteList.add(Favorite(id, username, name, avatar))
+
+
+                favoriteList.add(Favorite(username, name, avatar))
             }
         }
 
@@ -23,16 +24,16 @@ object MappingHelper {
     }
 
     fun mapCursorToObject(favoriteCursor: Cursor?): Favorite {
-        var favorite = Favorite()
+        var favoriteData = Favorite()
         favoriteCursor?.apply {
             moveToFirst()
-            val id = getInt(getColumnIndexOrThrow(DatabaseContract.FavoriteColumns._ID))
             val username = getString(getColumnIndexOrThrow(DatabaseContract.FavoriteColumns.USERNAME))
             val name = getString(getColumnIndexOrThrow(DatabaseContract.FavoriteColumns.NAME))
             val avatar = getString(getColumnIndexOrThrow(DatabaseContract.FavoriteColumns.AVATAR))
-            favorite = Favorite(id, username, name, avatar)
+
+            favoriteData = Favorite(username, name, avatar)
         }
 
-        return favorite
+        return favoriteData
     }
 }

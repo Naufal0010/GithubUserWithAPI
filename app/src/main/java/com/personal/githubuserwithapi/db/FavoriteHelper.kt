@@ -6,7 +6,6 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Companion.TABLE_NAME
 import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Companion.USERNAME
-import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Companion._ID
 import java.sql.SQLException
 
 class FavoriteHelper (context: Context) {
@@ -30,7 +29,7 @@ class FavoriteHelper (context: Context) {
             null,
             null,
             null,
-            "$_ID ASC"
+            "$USERNAME ASC"
         )
     }
 

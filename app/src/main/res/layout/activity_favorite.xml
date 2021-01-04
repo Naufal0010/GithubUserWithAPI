@@ -27,7 +27,6 @@
         android:scrollbarSize="5dp"
         android:scrollbarThumbVertical="@color/dark_gray"
         android:scrollbars="vertical"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
