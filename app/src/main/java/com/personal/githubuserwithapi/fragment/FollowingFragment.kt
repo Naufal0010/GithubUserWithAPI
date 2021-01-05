@@ -34,10 +34,10 @@ class FollowingFragment : Fragment() {
         followingViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())
             .get(FollowingViewModel::class.java)
 
-        val followingUser = activity!!.intent.getParcelableExtra<User>(EXTRA_DETAIL_USER) as User
+        val followingUser = requireActivity().intent.getParcelableExtra<User>(EXTRA_DETAIL_USER) as User
         setRecyclerView()
 
-        followingViewModel.setListFollowing(activity!!.applicationContext, followingUser.username.toString())
+        followingViewModel.setListFollowing(requireActivity().applicationContext, followingUser.username.toString())
         showLoading(true)
         viewModel(adapter)
 

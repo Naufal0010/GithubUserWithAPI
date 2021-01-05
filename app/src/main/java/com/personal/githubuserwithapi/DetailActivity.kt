@@ -27,7 +27,6 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
 
     private var isFavorite = false
-    private lateinit var uriWithId: Uri
     private lateinit var favoriteHelper: FavoriteHelper
     private lateinit var listUser: User
 
@@ -39,7 +38,6 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         listUser = intent.getParcelableExtra<User>(EXTRA_DETAIL_USER) as User
-
         favoriteHelper = FavoriteHelper.getInstance(applicationContext)
         favoriteHelper.open()
 
@@ -54,7 +52,6 @@ class DetailActivity : AppCompatActivity() {
                 setFavoriteIcon(true)
                 addToFavorite()
                 snackBarMessage(resources.getString(R.string.added_favorite))
-
             }
         }
 
@@ -63,10 +60,9 @@ class DetailActivity : AppCompatActivity() {
         viewPagerSection()
     }
 
+    // for checking out if the user is favorite or not
     private fun favoriteCheck() {
-        uriWithId = Uri.parse(CONTENT_URI.toString() + "/" + listUser.username)
-
-        val cursor = contentResolver.query(uriWithId, null, null, null, null)
+        val cursor = contentResolver.query(CONTENT_URI, null, null, null, null)
         val mFavorite = MappingHelper.mapCursorToArrayList(cursor)
         for (data in mFavorite) {
             if (listUser.username == data.username) {
@@ -110,7 +106,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun removedToFavorite() {
-        contentResolver.delete(uriWithId, null, null)
+        favoriteHelper.deleteByUsername(listUser.username.toString())
         isFavorite = false
     }
 

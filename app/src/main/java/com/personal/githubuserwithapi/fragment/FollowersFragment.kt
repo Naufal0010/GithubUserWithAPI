@@ -33,10 +33,10 @@ class FollowersFragment : Fragment() {
         followersViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())
             .get(FollowersViewModel::class.java)
 
-        val followersUser = activity!!.intent.getParcelableExtra<User>(EXTRA_DETAIL_USER) as User
+        val followersUser = requireActivity().intent.getParcelableExtra<User>(EXTRA_DETAIL_USER) as User
         setRecyclerView()
 
-        followersViewModel.setListFollowers(activity!!.applicationContext, followersUser.username.toString())
+        followersViewModel.setListFollowers(requireActivity().applicationContext, followersUser.username.toString())
         showLoading(true)
         viewModel(adapter)
 
