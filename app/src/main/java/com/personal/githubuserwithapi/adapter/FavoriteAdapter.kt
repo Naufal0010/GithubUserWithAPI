@@ -1,6 +1,5 @@
 package com.personal.githubuserwithapi.adapter
 
-import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +13,7 @@ import com.personal.githubuserwithapi.databinding.ItemRowUserBinding
 import com.personal.githubuserwithapi.model.Favorite
 import com.personal.githubuserwithapi.model.User
 
-class FavoriteAdapter(private val activity: Activity) : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
+class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
 
     var listFavorite = ArrayList<Favorite>()
     set(listFavorite) {

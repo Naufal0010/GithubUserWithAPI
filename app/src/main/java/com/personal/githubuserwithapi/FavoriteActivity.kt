@@ -66,7 +66,7 @@ class FavoriteActivity : AppCompatActivity() {
     private fun setRecyclerView() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.setHasFixedSize(true)
-        adapter = FavoriteAdapter(this)
+        adapter = FavoriteAdapter()
         binding.recyclerView.adapter = adapter
     }
 
@@ -101,10 +101,6 @@ class FavoriteActivity : AppCompatActivity() {
         loadFavoriteAsync()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        favoriteHelper.close()
-    }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

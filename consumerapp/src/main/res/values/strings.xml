@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Consumer App</string>
+    <string name="github_app">Consumer App</string>
+    <string name="github_name">Consumer App</string>
+    <string name="images_github">images_github</string>
+    <string name="wave">wave</string>
+    <string name="welcome">Welcome to Consumer App\nPlease tab button favorite\nto show list from favorite</string>
+    <string name="username">username</string>
+    <string name="company">company</string>
+    <string name="search">search</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="repository">Repository</string>
+    <string name="_24">24</string>
+    <string name="_1000">1000</string>
+    <string name="_255">255</string>
+    <string name="name">name</string>
+    <string name="location">location</string>
+    <string name="new_york">New York</string>
+    <string name="google">Google</string>
+    <string name="code_401">The connection is not good</string>
+    <string name="code_403">Please try again later</string>
+    <string name="code_404">Not Found</string>
+    <string name="tab_following">Following</string>
+    <string name="tab_followers">Followers</string>
+    <string name="fab_button">fab button</string>
+    <string name="favorite">favorite</string>
+    <string name="settings">settings</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="empty_data">There\'s no data currently</string>
+    <string name="favorite_users">Favorite Users</string>
+
+</resources>

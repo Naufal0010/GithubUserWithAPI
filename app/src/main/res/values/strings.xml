@@ -18,18 +18,15 @@
     <string name="location">location</string>
     <string name="new_york">New York</string>
     <string name="google">Google</string>
-
     <string name="code_401">The connection is not good</string>
     <string name="code_403">Please try again later</string>
     <string name="code_404">Not Found</string>
-
     <string name="tab_following">Following</string>
     <string name="tab_followers">Followers</string>
     <string name="fab_button">fab button</string>
     <string name="favorite">favorite</string>
     <string name="settings">settings</string>
     <string name="title_activity_settings">SettingsActivity</string>
-
     <string name="added_favorite">Added to Favorite</string>
     <string name="removed_favorite">Removed from Favorite</string>
     <string name="empty_data">There\'s no data currently</string>
@@ -40,7 +37,6 @@
     <string name="language">Language</string>
     <string name="enable_alarm_in_9am">Enable Alarm in 09:00</string>
     <string name="favorite_detail">favorite_detail</string>
-
     <string name="github_reminder">Github Reminder</string>
     <string name="github_message">Github App Waiting You!</string>
     <string name="alarm_on">Alarm is On</string>

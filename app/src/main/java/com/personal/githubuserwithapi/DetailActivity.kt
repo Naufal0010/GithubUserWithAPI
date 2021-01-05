@@ -34,10 +34,10 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        listUser = intent.getParcelableExtra<User>(EXTRA_DETAIL_USER) as User
         favoriteHelper = FavoriteHelper.getInstance(applicationContext)
         favoriteHelper.open()
+
+        listUser = intent.getParcelableExtra<User>(EXTRA_DETAIL_USER) as User
 
         favoriteCheck()
         binding.fab.setOnClickListener {
@@ -129,11 +129,6 @@ class DetailActivity : AppCompatActivity() {
         onBackPressed()
 
         return true
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        favoriteHelper.close()
     }
     
     companion object {

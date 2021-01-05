@@ -3,7 +3,6 @@ package com.personal.githubuserwithapi.db
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.provider.ContactsContract
 import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Companion.TABLE_NAME
 
 internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
