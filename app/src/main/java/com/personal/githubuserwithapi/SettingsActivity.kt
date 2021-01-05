@@ -1,11 +1,11 @@
 package com.personal.githubuserwithapi
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.*
+import com.personal.githubuserwithapi.notification.Notification
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -36,15 +36,17 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         private fun enableAlarm() {
+            val notification = Notification()
 
-            val sharedPreferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+            val switchPreference = findPreference<Preference>("ALARM")
+            switchPreference?.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
+                if(newValue == true) {
+                    notification.setRepeatAlarm(requireContext(), Notification.EXTRA_TYPE, resources.getString(R.string.github_message))
+                } else {
+                    notification.cancelAlarm(requireContext())
+                }
 
-            val isEnableAlarm: Boolean = sharedPreferences.getBoolean("ALARM", false)
-            if (isEnableAlarm) {
-
-            }
-            else {
-
+                true
             }
         }
 

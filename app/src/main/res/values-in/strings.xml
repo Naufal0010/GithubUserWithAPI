@@ -32,6 +32,7 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="fab_button">fab button</string>
 
+    <string name="favorite_detail">favorite_detail</string>
     <string name="added_favorite">Ditambahkan ke Favorite</string>
     <string name="removed_favorite">Dikeluarkan dari Favorite</string>
     <string name="empty_data">Tidak ada data saat ini</string>
@@ -41,5 +42,10 @@
     <string name="enable_alarm_in_9am">Aktifkan Alarm di Jam 09:00</string>
     <string name="change_language_settings">Ubah Pengaturan Bahasa</string>
     <string name="language">Bahasa</string>
+
+    <string name="github_reminder">Github Reminder</string>
+    <string name="github_message">Github App Menunggumu!</string>
+    <string name="alarm_on">Alarm hidup</string>
+    <string name="alarm_off">Alarm mati</string>
 
 </resources>

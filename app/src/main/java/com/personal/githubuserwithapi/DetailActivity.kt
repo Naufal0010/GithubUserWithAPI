@@ -13,8 +13,13 @@ import com.google.android.material.snackbar.Snackbar
 import com.personal.githubuserwithapi.databinding.ActivityDetailBinding
 import com.personal.githubuserwithapi.db.DatabaseContract
 import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Companion.AVATAR
+import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Companion.COMPANY
 import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Companion.CONTENT_URI
+import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Companion.FOLLOWERS
+import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Companion.FOLLOWING
+import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Companion.LOCATION
 import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Companion.NAME
+import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Companion.REPOSITORY
 import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Companion.USERNAME
 import com.personal.githubuserwithapi.db.FavoriteHelper
 import com.personal.githubuserwithapi.entity.Favorite
@@ -95,10 +100,16 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun addToFavorite() {
+
         val values = ContentValues().apply {
             put(USERNAME, listUser.username)
             put(NAME, listUser.name)
             put(AVATAR, listUser.avatar)
+            put(COMPANY, listUser.company)
+            put(LOCATION, listUser.location)
+            put(REPOSITORY, listUser.repository)
+            put(FOLLOWERS, listUser.followers)
+            put(FOLLOWING, listUser.following)
         }
 
         isFavorite = true

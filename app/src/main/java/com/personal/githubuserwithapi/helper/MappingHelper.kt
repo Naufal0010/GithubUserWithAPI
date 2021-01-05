@@ -3,6 +3,7 @@ package com.personal.githubuserwithapi.helper
 import android.database.Cursor
 import com.personal.githubuserwithapi.db.DatabaseContract
 import com.personal.githubuserwithapi.entity.Favorite
+import com.personal.githubuserwithapi.entity.User
 
 object MappingHelper {
 
@@ -14,9 +15,13 @@ object MappingHelper {
                 val username = getString(getColumnIndexOrThrow(DatabaseContract.FavoriteColumns.USERNAME))
                 val name = getString(getColumnIndexOrThrow(DatabaseContract.FavoriteColumns.NAME))
                 val avatar = getString(getColumnIndexOrThrow(DatabaseContract.FavoriteColumns.AVATAR))
+                val company = getString(getColumnIndexOrThrow(DatabaseContract.FavoriteColumns.COMPANY))
+                val location = getString(getColumnIndexOrThrow(DatabaseContract.FavoriteColumns.LOCATION))
+                val repository = getString(getColumnIndexOrThrow(DatabaseContract.FavoriteColumns.REPOSITORY))
+                val followers = getString(getColumnIndexOrThrow(DatabaseContract.FavoriteColumns.FOLLOWERS))
+                val following = getString(getColumnIndexOrThrow(DatabaseContract.FavoriteColumns.FOLLOWING))
 
-
-                favoriteList.add(Favorite(username, name, avatar))
+                favoriteList.add(Favorite(username, name, avatar, location, company, repository, followers, following))
             }
         }
 

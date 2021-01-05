@@ -41,4 +41,9 @@
     <string name="enable_alarm_in_9am">Enable Alarm in 09:00</string>
     <string name="favorite_detail">favorite_detail</string>
 
+    <string name="github_reminder">Github Reminder</string>
+    <string name="github_message">Github App Waiting You!</string>
+    <string name="alarm_on">Alarm is On</string>
+    <string name="alarm_off">Alarm is Off</string>
+
 </resources>

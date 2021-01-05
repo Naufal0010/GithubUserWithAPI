@@ -23,15 +23,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <provider
-            android:authorities="com.personal.githubuserwithapi"
             android:name=".provider.FavoriteProvider"
+            android:authorities="com.personal.githubuserwithapi"
             android:enabled="true"
             android:exported="true"
             android:readPermission="com.personal.githubuserwithapi.READ_DATABASE"
             android:writePermission="com.personal.githubuserwithapi.WRITE_DATABASE" />
 
-        <activity
-            android:name=".FavoriteActivity" />
+        <activity android:name=".FavoriteActivity" />
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" />
@@ -51,6 +50,10 @@
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan" />
+
+        <receiver
+            android:name=".notification.Notification"
+            android:enabled="true" />
     </application>
 
 </manifest>
