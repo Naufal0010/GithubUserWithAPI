@@ -41,9 +41,9 @@ class SettingsActivity : AppCompatActivity() {
             val switchPreference = findPreference<Preference>("ALARM")
             switchPreference?.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
                 if(newValue == true) {
-                    notification.setRepeatAlarm(requireContext(), Notification.EXTRA_TYPE, resources.getString(R.string.github_message))
+                    notification.setAlarmNotification(requireContext(), Notification.EXTRA_TYPE, resources.getString(R.string.github_message))
                 } else {
-                    notification.cancelAlarm(requireContext())
+                    notification.cancelAlarmNotification(requireContext())
                 }
 
                 true

@@ -1,17 +1,11 @@
 package com.personal.githubuserwithapi
 
 import android.content.ContentValues
-import android.database.Cursor
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.personal.githubuserwithapi.databinding.ActivityDetailBinding
-import com.personal.githubuserwithapi.db.DatabaseContract
 import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Companion.AVATAR
 import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Companion.COMPANY
 import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Companion.CONTENT_URI
@@ -22,9 +16,8 @@ import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Compan
 import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Companion.REPOSITORY
 import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Companion.USERNAME
 import com.personal.githubuserwithapi.db.FavoriteHelper
-import com.personal.githubuserwithapi.entity.Favorite
 import com.personal.githubuserwithapi.fragment.SectionsPagerAdapter
-import com.personal.githubuserwithapi.entity.User
+import com.personal.githubuserwithapi.model.User
 import com.personal.githubuserwithapi.helper.MappingHelper
 
 class DetailActivity : AppCompatActivity() {

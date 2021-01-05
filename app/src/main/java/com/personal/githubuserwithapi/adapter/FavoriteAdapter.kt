@@ -11,8 +11,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.personal.githubuserwithapi.DetailActivity
 import com.personal.githubuserwithapi.R
 import com.personal.githubuserwithapi.databinding.ItemRowUserBinding
-import com.personal.githubuserwithapi.entity.Favorite
-import com.personal.githubuserwithapi.entity.User
+import com.personal.githubuserwithapi.model.Favorite
+import com.personal.githubuserwithapi.model.User
 
 class FavoriteAdapter(private val activity: Activity) : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
 

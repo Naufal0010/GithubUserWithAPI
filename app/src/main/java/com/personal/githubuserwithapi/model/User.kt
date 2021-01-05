@@ -1,10 +1,10 @@
-package com.personal.githubuserwithapi.entity
+package com.personal.githubuserwithapi.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Favorite (
+data class User (
     var username: String? = null,
     var name: String? = null,
     var avatar: String? = null,
@@ -13,4 +13,4 @@ data class Favorite (
     var repository: String? = null,
     var followers: String? = null,
     var following: String? = null
-    ) : Parcelable
+        ) : Parcelable

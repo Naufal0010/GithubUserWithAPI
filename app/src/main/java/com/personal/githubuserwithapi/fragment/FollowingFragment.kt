@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.personal.githubuserwithapi.adapter.ListFollowingUserAdapter
 import com.personal.githubuserwithapi.api.FollowingViewModel
 import com.personal.githubuserwithapi.databinding.FragmentFollowingBinding
-import com.personal.githubuserwithapi.entity.Following
-import com.personal.githubuserwithapi.entity.User
+import com.personal.githubuserwithapi.model.Following
+import com.personal.githubuserwithapi.model.User
 
 class FollowingFragment : Fragment() {
 

@@ -5,7 +5,7 @@
     <string name="github_name">Github Users</string>
     <string name="images_github">images_github</string>
     <string name="wave">wave</string>
-    <string name="welcome">Selamat Datang di Github App\nSilakan cari username\nuntuk memunculkan daftar dari github users</string>
+    <string name="welcome">Selamat datang di Github App\nSilakan cari username\nuntuk memunculkan daftar dari github users</string>
     <string name="username">username</string>
     <string name="company">company</string>
     <string name="search">search</string>

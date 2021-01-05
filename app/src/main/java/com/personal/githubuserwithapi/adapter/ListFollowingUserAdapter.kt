@@ -10,8 +10,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.personal.githubuserwithapi.DetailActivity
 import com.personal.githubuserwithapi.R
 import com.personal.githubuserwithapi.databinding.ItemRowUserBinding
-import com.personal.githubuserwithapi.entity.Following
-import com.personal.githubuserwithapi.entity.User
+import com.personal.githubuserwithapi.model.Following
+import com.personal.githubuserwithapi.model.User
 
 class ListFollowingUserAdapter(private val listFollowing : ArrayList<Following>) : RecyclerView.Adapter<ListFollowingUserAdapter.ViewHolder>() {
 

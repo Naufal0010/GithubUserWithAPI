@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.personal.githubuserwithapi.adapter.ListFollowersUserAdapter
 import com.personal.githubuserwithapi.api.FollowersViewModel
 import com.personal.githubuserwithapi.databinding.FragmentFollowersBinding
-import com.personal.githubuserwithapi.entity.Followers
-import com.personal.githubuserwithapi.entity.User
+import com.personal.githubuserwithapi.model.Followers
+import com.personal.githubuserwithapi.model.User
 
 class FollowersFragment : Fragment() {
     private var _binding: FragmentFollowersBinding? = null

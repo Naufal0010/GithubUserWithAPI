@@ -10,7 +10,7 @@ import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import com.personal.githubuserwithapi.BuildConfig
 import com.personal.githubuserwithapi.R
-import com.personal.githubuserwithapi.entity.Followers
+import com.personal.githubuserwithapi.model.Followers
 import cz.msebera.android.httpclient.Header
 import org.json.JSONArray
 import org.json.JSONObject

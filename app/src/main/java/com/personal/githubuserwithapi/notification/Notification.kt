@@ -24,7 +24,7 @@ class Notification : BroadcastReceiver() {
         Log.d(TAG, "Alarm is on")
     }
 
-    fun setRepeatAlarm(context: Context, type: String, message: String) {
+    fun setAlarmNotification(context: Context, type: String, message: String) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, Notification::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -43,10 +43,10 @@ class Notification : BroadcastReceiver() {
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
 
         Toast.makeText(context, context.resources.getString(R.string.alarm_on), Toast.LENGTH_SHORT).show()
-        Log.d(TAG, "Set Alarm Success")
+        Log.d(TAG, "Set Alarm Notification Success")
     }
 
-    fun cancelAlarm(context: Context) {
+    fun cancelAlarmNotification(context: Context) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, Notification::class.java)
         val requestCode = NOTIFICATION_ID

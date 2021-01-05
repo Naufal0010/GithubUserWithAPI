@@ -12,8 +12,7 @@ import com.personal.githubuserwithapi.adapter.FavoriteAdapter
 import com.personal.githubuserwithapi.databinding.ActivityFavoriteBinding
 import com.personal.githubuserwithapi.db.DatabaseContract.FavoriteColumns.Companion.CONTENT_URI
 import com.personal.githubuserwithapi.db.FavoriteHelper
-import com.personal.githubuserwithapi.entity.Favorite
-import com.personal.githubuserwithapi.entity.User
+import com.personal.githubuserwithapi.model.Favorite
 import com.personal.githubuserwithapi.helper.MappingHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

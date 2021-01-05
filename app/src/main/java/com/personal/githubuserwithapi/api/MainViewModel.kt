@@ -10,7 +10,7 @@ import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import com.personal.githubuserwithapi.BuildConfig
 import com.personal.githubuserwithapi.R
-import com.personal.githubuserwithapi.entity.User
+import com.personal.githubuserwithapi.model.User
 import cz.msebera.android.httpclient.Header
 import org.json.JSONObject
 import java.lang.Exception

@@ -2,8 +2,7 @@ package com.personal.githubuserwithapi.helper
 
 import android.database.Cursor
 import com.personal.githubuserwithapi.db.DatabaseContract
-import com.personal.githubuserwithapi.entity.Favorite
-import com.personal.githubuserwithapi.entity.User
+import com.personal.githubuserwithapi.model.Favorite
 
 object MappingHelper {
 
@@ -26,19 +25,5 @@ object MappingHelper {
         }
 
         return favoriteList
-    }
-
-    fun mapCursorToObject(favoriteCursor: Cursor?): Favorite {
-        var favoriteData = Favorite()
-        favoriteCursor?.apply {
-            moveToFirst()
-            val username = getString(getColumnIndexOrThrow(DatabaseContract.FavoriteColumns.USERNAME))
-            val name = getString(getColumnIndexOrThrow(DatabaseContract.FavoriteColumns.NAME))
-            val avatar = getString(getColumnIndexOrThrow(DatabaseContract.FavoriteColumns.AVATAR))
-
-            favoriteData = Favorite(username, name, avatar)
-        }
-
-        return favoriteData
     }
 }
